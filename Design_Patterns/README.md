@@ -24,6 +24,15 @@ They abstract the instantiation process, hiding the complexity of object creatio
 | 4 | **Builder** | Step-by-step construction of complex objects |
 | 5 | **Prototype** | Clone existing objects instead of creating from scratch |
 
+
+### Quick Decision Guide:
+─────────────────────
+Need only 1 instance?          → Singleton
+Need 1 product, extensible?    → Factory Method
+Need family of products?       → Abstract Factory
+Need step-by-step building?    → Builder
+Need to clone expensive objs?  → Prototype
+
 ---
 
 ## 2. Structural Patterns (7 Patterns)
