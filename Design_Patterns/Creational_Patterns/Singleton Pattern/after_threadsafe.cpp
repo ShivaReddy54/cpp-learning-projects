@@ -44,7 +44,7 @@ std::mutex DatabaseConnection::mtx;
                     Thread Safety Issue in Basic Singleton
 ===============================================================================
 
-The basic Singleton implementation shown in after.cpp is **NOT thread-safe**.
+The basic Singleton implementation shown in after.cpp is NOT thread-safe.
 
 Problem:
 If two or more threads call getInstance() at the same time, they may all
