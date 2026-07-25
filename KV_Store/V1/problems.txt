@@ -1,0 +1,12 @@
+Why This Version Is NOT Good Enough for HFT
+
+std::unordered_map has several problems:
+
+| Problem | Explanation |
+|---|---|
+| **Linked list buckets** | It stores collided elements in linked lists. Each link is a separate memory allocation. Jumping through linked lists causes cache misses. |
+| **Dynamic allocation** | Every insert calls `new` (heap allocation). Heap allocation takes 100-1000+ nanoseconds. |
+| **Pointer chasing** | To find a key, you follow pointers: bucket → node → next node → ... Each pointer jump might miss the cache (50-100ns penalty each). |
+| **No SIMD** | It compares keys one at a time. No parallel comparison. |
+| **Bad cache behavior** | Data is scattered randomly in memory. The CPU cache can't help much. |
+

@@ -1,0 +1,24 @@
+
+What's Better About This Version
+
+| Improvement | Why It Matters |
+|---|---|
+| **Flat array** | All data in one contiguous block. CPU can cache large chunks. No pointer chasing. |
+| **Linear probing** | Walking through adjacent memory locations. Very cache-friendly — the next slot is right next to the current one in memory. |
+| **No linked lists** | No separate allocations per element. No pointer following. |
+| **Power-of-2 capacity** | Allows bitwise AND instead of modulo. AND takes 1 CPU cycle; modulo takes ~25 cycles. |
+| **DELETED state** | Enables correct deletion without breaking probing chains. |
+
+
+What's Still Not Good Enough
+
+| Problem | Explanation |
+|---|---|
+| **std::string in every slot** | std::string allocates memory on the heap for its characters. Heap allocation is slow. |
+| **String comparison** | Comparing two strings takes O(length) time. Not instant. |
+| **No SIMD** | We check one slot at a time. SIMD could check 16 slots simultaneously. |
+| **Single threaded** | Only one thread can use it at a time safely. |
+| **No metadata byte** | We store full key in every slot. We could store just a tiny hint first and only check the full key when the hint matches. |
+
+
+

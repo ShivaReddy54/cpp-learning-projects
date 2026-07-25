@@ -1,0 +1,3 @@
+compile file with
+
+g++ -O3 -march=native benchmark_v1.cpp -o test.exe

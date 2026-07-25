@@ -1,0 +1,10 @@
+What Makes This Version Significantly Better
+
+| Feature | What It Does | Speed Impact |
+|---|---|---|
+| **Metadata byte (H2)** | 7-bit hash hint stored in 1 byte per slot. SIMD can check 16 hints at once. | Eliminates 90%+ of unnecessary full-key comparisons |
+| **SIMD probing** | `_mm_cmpeq_epi8` + `_mm_movemask_epi8` checks 16 slots in ~3-4 instructions | Reduces probing from 16 comparisons to 3 instructions |
+| **Separate metadata array** | Metadata is compact (1 byte/slot). 64 bytes = 64 slots' metadata in one cache line. | Metadata probing rarely misses cache |
+| **Structure of Arrays** | Metadata and data stored separately, not interleaved | Better cache utilization for both metadata and data |
+| **Higher load factor (87.5%)** | SIMD probing is so fast that we can tolerate more occupancy | Less wasted memory, fewer resizes |
+
