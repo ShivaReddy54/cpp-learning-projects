@@ -82,3 +82,84 @@ They deal with algorithms and the assignment of responsibilities between objects
 | 9 | **Strategy** | Swap algorithms at runtime |
 | 10 | **Template Method** | Define the skeleton of an algorithm, letting subclasses fill in the steps |
 | 11 | **Visitor** | Add operations to objects without modifying them |
+
+### ### Quick Decision Guide:
+─────────────────────
+
+Need multiple handlers to try a request?      → Chain of Responsibility
+Need undo/redo or queue commands?             → Command
+Need to evaluate a custom language/grammar?   → Interpreter
+Need to traverse a collection uniformly?      → Iterator
+Too much object-to-object communication?      → Mediator
+Need undo/history or snapshots?               → Memento
+Need automatic notifications on changes?      → Observer
+Behavior depends on current state?            → State
+Need interchangeable algorithms?              → Strategy
+Common algorithm with customizable steps?     → Template Method
+Need new operations without changing classes? → Visitor
+
+---
+
+┌─────────────────────────────────────────────────────────────────────┐
+│              SIMILAR PATTERNS — HOW THEY DIFFER                     │
+├──────────────────┬────────────────────┬─────────────────────────────┤
+│ Comparison       │ Pattern A          │ Pattern B                   │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Strategy vs State│ Client chooses     │ Object changes itself       │
+│                  │ algorithm manually │ based on internal state     │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Command vs       │ Encapsulates       │ Encapsulates                │
+│   Strategy       │ action (undoable)  │ algorithm (swappable)       │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Observer vs      │ One-to-many        │ One-to-one mediator         │
+│   Mediator       │ notification       │ coordinates interactions    │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Memento vs       │ Saves full state   │ Strategy saved as command   │
+│   Command        │ snapshot           │ for undo                    │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Template Method  │ Inheritance-based  │ Composition-based           │
+│   vs Strategy    │ (subclass decides) │ (client plugs in strategy)  │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Chain of Resp.   │ Multiple handlers  │ Single handler chosen       │
+│   vs Strategy    │ in sequence        │ by client                   │
+├──────────────────┼────────────────────┼─────────────────────────────┤
+│ Visitor vs       │ Add operations     │ Add element types           │
+│   Strategy       │ to existing types  │ with new algorithm variants │
+└──────────────────┴────────────────────┴─────────────────────────────┘
+
+
+## Summary — All 23 Design Patterns
+┌────────────────────────────────────────────────────────────────────┐
+│                ALL 23 GoF DESIGN PATTERNS                          │
+├────────────────────┬───────────────────────────────────────────────┤
+│                    │                                               │
+│  CREATIONAL (5)    │  HOW to CREATE objects                        │
+│  ├── Singleton     │  One instance, global access                  │
+│  ├── Factory Method│  Subclass decides which to create             │
+│  ├── Abstract Fact │  Create families of related objects           │
+│  ├── Builder       │  Step-by-step complex construction            │
+│  └── Prototype     │  Clone existing instead of new                │
+│                    │                                               │
+│  STRUCTURAL (7)    │  HOW to STRUCTURE/COMPOSE objects             │
+│  ├── Adapter       │  Convert incompatible interface               │
+│  ├── Bridge        │  Decouple abstraction from implementation     │
+│  ├── Composite     │  Treat leaf and composite uniformly           │
+│  ├── Decorator     │  Add behavior dynamically via wrapping        │
+│  ├── Facade        │  Simple interface to complex subsystem        │
+│  ├── Flyweight     │  Share intrinsic state to save memory         │
+│  └── Proxy         │  Placeholder to control access                │
+│                    │                                               │
+│  BEHAVIORAL (11)   │  HOW objects COMMUNICATE                      │
+│  ├── Chain of Resp │  Pass request along handler chain             │
+│  ├── Command       │  Encapsulate request as object                │
+│  ├── Interpreter   │  Grammar + interpret as expression tree       │
+│  ├── Iterator      │  Traverse collection uniformly                │
+│  ├── Mediator      │  Centralize communication between objects     │
+│  ├── Memento       │  Capture/restore state for undo               │
+│  ├── Observer      │  Notify dependents on state change            │
+│  ├── State         │  Change behavior when state changes           │
+│  ├── Strategy      │  Swap algorithms at runtime                   │
+│  ├── Template Meth │  Algorithm skeleton, subclasses fill steps    │
+│  └── Visitor       │  Add operations without modifying classes     │
+│                    │                                               │
+└────────────────────┴───────────────────────────────────────────────┘
