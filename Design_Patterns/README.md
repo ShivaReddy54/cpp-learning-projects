@@ -51,6 +51,16 @@ They deal with relationships between entities—how classes and objects are comb
 | 6 | **Flyweight** | Share common state across many objects to save memory |
 | 7 | **Proxy** | A placeholder/control object for another object |
 
+### Quick Decision Guide:
+─────────────────────
+Incompatible interfaces?          → Adapter
+Abstraction & impl coupled?       → Bridge
+Part-whole hierarchy?             → Composite
+Need dynamic features?            → Decorator
+Complex subsystem, need simple?   → Facade
+Too many similar objects?         → Flyweight
+Need access control/lazy load?    → Proxy
+
 ---
 
 ## 3. Behavioral Patterns (11 Patterns)
